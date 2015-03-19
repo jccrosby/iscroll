@@ -312,6 +312,7 @@ function IScroll (el, options) {
 	}
 
 	this.options.invertWheelDirection = this.options.invertWheelDirection ? -1 : 1;
+	this.options.invertHScroll = this.options.invertHScroll ? -1 : 1;
 
 // INSERT POINT: NORMALIZATION
 
@@ -488,6 +489,8 @@ IScroll.prototype = {
 
 		deltaX = this.hasHorizontalScroll ? deltaX : 0;
 		deltaY = this.hasVerticalScroll ? deltaY : 0;
+
+		deltaX *= this.invertHScroll;
 
 		newX = this.x + deltaX;
 		newY = this.y + deltaY;
